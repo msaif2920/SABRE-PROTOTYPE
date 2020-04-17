@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.prototypesabre.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.prototypesabre.ui.users.UsersFragment"
+        android:label="Message"
+        tools:layout="@layout/fragment_list_of_user" />
+
+    <fragment
+        android:id="@+id/nav_tools"
+        android:name="com.example.prototypesabre.ui.Registration.RegistrationFragment"
+        android:label="Registration"
+        tools:layout="@layout/fragment_registration_super_user" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.example.prototypesabre.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.example.prototypesabre.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+</navigation>
