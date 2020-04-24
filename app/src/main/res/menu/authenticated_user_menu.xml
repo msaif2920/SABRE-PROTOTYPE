@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="nav_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Home"
+            android:title="Home"
+            android:icon="@drawable/ic_home" />
+        <item
+            android:id="@+id/Group"
+            android:title="Group"
+            android:icon="@drawable/ic_group" />
+        <item
+            android:id="@+id/Group_Request"
+            android:title="Group Request"
+            android:icon="@drawable/ic_group_request" />
+        <item
+            android:id="@+id/Create_Group"
+            android:title="Create Group"
+            android:icon="@drawable/ic_group_add" />
+        <item
+            android:id="@+id/chat"
+            android:title="Chat"
+            android:icon="@drawable/ic_chat" />
+
+    </group>
+
+</menu>
