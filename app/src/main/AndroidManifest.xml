@@ -26,7 +26,9 @@
                 android:value="com.example.prototypesabre.MainActivity" />
         </activity>
         <activity android:name=".RegisternowActivity" />
-        <activity android:name=".AuthenticateduserActivity" />
+        <activity
+            android:name=".AuthenticateduserActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

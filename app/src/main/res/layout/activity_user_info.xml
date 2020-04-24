@@ -8,38 +8,38 @@
 
     <ImageView
         android:id="@+id/userInfoProfiile"
-        android:layout_width="123dp"
-        android:layout_height="139dp"
+        android:layout_width="141dp"
+        android:layout_height="123dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="33dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/userInfoTextView"
         app:layout_constraintEnd_toStartOf="@+id/pointEditText"
-        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
         android:id="@+id/userInfoTextView"
-        android:layout_width="410dp"
-        android:layout_height="459dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="403dp"
+        android:layout_marginBottom="32dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userInfoProfiile"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/userInfoProfiile" />
 
     <EditText
         android:id="@+id/pointEditText"
         android:layout_width="186dp"
         android:layout_height="86dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="56dp"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="120dp"
         android:ems="10"
         android:foregroundGravity="top|left"
@@ -47,5 +47,7 @@
         android:text="Point"
         app:layout_constraintBottom_toTopOf="@+id/userInfoTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/userInfoProfiile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -68,7 +68,7 @@ public class ReviewPage extends AppCompatActivity {
         denyButton = findViewById(R.id.denyButton);
         point = findViewById(R.id.pointEditText);
 
-        approveButton.setEnabled(false);
+        //  approveButton.setEnabled(false);
 
 
         db = FirebaseFirestore.getInstance();

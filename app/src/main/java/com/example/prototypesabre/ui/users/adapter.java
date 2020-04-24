@@ -14,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prototypesabre.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,13 +23,15 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
     ArrayList<String> emails = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> point = new ArrayList<String>();
+    static ArrayList<String> links = new ArrayList<String>();
 
-    public adapter(Context ct, ArrayList<String> email, ArrayList<String> names, ArrayList<String> points) {
+    public adapter(Context ct, ArrayList<String> email, ArrayList<String> names, ArrayList<String> points, ArrayList<String> image) {
 
         this.ct = ct;
         emails = email;
         name = names;
         point = points;
+        links = image;
     }
 
     @NonNull
@@ -44,12 +47,15 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
         holder.emailTextView.setText(emails.get(position));
         holder.pointTextView.setText("Point: " + point.get(position));
         holder.nameTextView.setText(name.get(position));
+        Picasso.with(ct).load(links.get(position)).into(holder.profileImageView);
+
 
         holder.userListLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ct, UserInfoActivity.class);
                 intent.putExtra("Email", emails.get(position));
+                intent.putExtra("Position", position);
                 ct.startActivity(intent);
 
             }
@@ -73,6 +79,7 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
             pointTextView = itemView.findViewById(R.id.pointTextView);
             emailTextView = itemView.findViewById(R.id.emailTextView);
             userListLayout = itemView.findViewById(R.id.userlistLayout);
+            profileImageView = itemView.findViewById(R.id.profile);
         }
     }
 }

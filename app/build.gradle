@@ -24,6 +24,8 @@ android {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
     }
+
+
 }
 
 dependencies {
@@ -45,6 +47,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.4.2'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
 
 }

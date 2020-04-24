@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     String time = "";
 
     private FirebaseFirestore db;
-    firebaseFunction Firebasefunction = new firebaseFunction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
                                         DocumentSnapshot document = task.getResult();
                                         if (document.exists()) {
                                             if (document.get("Login").equals("1")) {
-                                                Firebasefunction.updateField("Users", email.trim(), "Login", "2", getApplicationContext());
+
                                                 Intent intent = new Intent(getApplicationContext(), firstTimelogin.class);
+                                                intent.putExtra("Email", email);
                                                 startActivity(intent);
                                             }
                                         } else {
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                             });
 
 
-                            Intent intent = new Intent(getApplicationContext(), firstTimelogin.class);
+                            Intent intent = new Intent(getApplicationContext(), AuthenticateduserActivity.class);
                             startActivity(intent);
 
 
@@ -153,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+
 
     }
 

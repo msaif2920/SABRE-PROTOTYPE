@@ -24,6 +24,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -38,6 +41,7 @@ public class UsersFragment extends Fragment {
     ArrayList<String> emails = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<String> point = new ArrayList<String>();
+    ArrayList<String> imageLink = new ArrayList<String>();
 
     private FirebaseFirestore db;
 
@@ -53,9 +57,9 @@ public class UsersFragment extends Fragment {
 
         getUserInfo(new FirebaseCallback() {
             @Override
-            public void onCallback(ArrayList list, ArrayList list2, ArrayList list3) {
+            public void onCallback(ArrayList list, ArrayList list2, ArrayList list3, ArrayList list4) {
 
-                adapter myadapter = new adapter(getContext(), emails, name, point);
+                adapter myadapter = new adapter(getContext(), emails, name, point, imageLink);
                 recyclerView.setAdapter(myadapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -78,8 +82,9 @@ public class UsersFragment extends Fragment {
                                 emails.add(document.get("Email").toString());
                                 name.add(document.get("Name").toString());
                                 point.add(document.get("Point").toString());
+                                imageLink.add(document.get("Links").toString());
 
-                                firebaseCallback.onCallback(emails, name, point);
+                                firebaseCallback.onCallback(emails, name, point, imageLink);
 
 
                             }
@@ -95,6 +100,8 @@ public class UsersFragment extends Fragment {
 
     interface FirebaseCallback {
 
-        void onCallback(ArrayList list, ArrayList list2, ArrayList list3);
+        void onCallback(ArrayList list, ArrayList list2, ArrayList list3, ArrayList<String> list4);
     }
+
+
 }

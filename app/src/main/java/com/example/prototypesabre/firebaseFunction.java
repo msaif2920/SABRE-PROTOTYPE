@@ -11,6 +11,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -61,6 +63,21 @@ public class firebaseFunction {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w("FAILED", "Error updating document", e);
+                    }
+                });
+    }
+
+    public void changePassword(String password) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String newPassword = password;
+
+        user.updatePassword(newPassword)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.i("DONE", "User password updated.");
+                        }
                     }
                 });
     }
