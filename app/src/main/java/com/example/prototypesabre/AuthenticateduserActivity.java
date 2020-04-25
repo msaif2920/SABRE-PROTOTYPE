@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.prototypesabre.AuthenticatedUserFragment.CreateGroup.CreateGroup;
 import com.google.android.material.navigation.NavigationView;
 
 public class AuthenticateduserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,6 +51,14 @@ public class AuthenticateduserActivity extends AppCompatActivity implements Navi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+
+        switch (item.getItemId()) {
+            case R.id.Create_Group:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new CreateGroup()).commit();
+                break;
+        }
+
+        return true;
     }
 }
