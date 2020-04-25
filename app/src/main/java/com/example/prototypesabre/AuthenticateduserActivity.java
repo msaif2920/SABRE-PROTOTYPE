@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.example.prototypesabre.AuthenticatedUserFragment.CreateGroup.CreateGroup;
@@ -58,6 +59,8 @@ public class AuthenticateduserActivity extends AppCompatActivity implements Navi
                         new CreateGroup()).commit();
                 break;
         }
+
+        drawer.closeDrawer(GravityCompat.START);
 
         return true;
     }
