@@ -45,35 +45,50 @@
         app:layout_constraintTop_toBottomOf="@+id/checkNameAvilavility" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="278dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/emailInvite"
+        android:layout_width="302dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="56dp"
+        android:alpha="0"
         android:ems="10"
         android:hint="Email to invite"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/createGroup" />
 
     <Button
         android:id="@+id/Invite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="32dp"
+        android:alpha="0"
+        android:onClick="invite"
         android:text="Invite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInvite" />
 
     <Button
-        android:id="@+id/Done"
+        android:id="@+id/createGroup"
+        android:layout_width="125dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="40dp"
+        android:text="Create Group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionGroup" />
+
+    <Button
+        android:id="@+id/doneButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:alpha="0"
         android:text="Done"
         app:layout_constraintBaseline_toBaselineOf="@+id/Invite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toEndOf="@+id/Invite" />
 </androidx.constraintlayout.widget.ConstraintLayout>
