@@ -21,7 +21,7 @@
                 android:id="@+id/profile"
                 android:layout_width="101dp"
                 android:layout_height="84dp"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,10 +39,12 @@
 
             <TextView
                 android:id="@+id/emailTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="288dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="98dp"
                 app:layout_constraintEnd_toStartOf="@+id/pointTextView"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/profile"
                 app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 

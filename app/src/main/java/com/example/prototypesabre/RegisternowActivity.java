@@ -39,7 +39,7 @@ public class RegisternowActivity extends AppCompatActivity {
         Email = findViewById(R.id.emailEditText);
         Interest = findViewById(R.id.interestEditText);
         Credential = findViewById(R.id.credentialEditText);
-        Reference = findViewById(R.id.credentialEditText);
+        Reference = findViewById(R.id.referenceEditText);
 
         db = FirebaseFirestore.getInstance();
 
@@ -49,13 +49,11 @@ public class RegisternowActivity extends AppCompatActivity {
     public void submit(View view) {
 
         boolean check = true;
-
-
         name = Name.getText().toString();
         if (name.trim().isEmpty()) {
             check = false;
         }
-        email = Email.getText().toString();
+        email = Email.getText().toString().toUpperCase().trim();
         if (email.trim().isEmpty()) {
             check = false;
         }
@@ -92,7 +90,6 @@ public class RegisternowActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "You can fix your information and submit", Toast.LENGTH_SHORT).show();
                         }
                     }).show();
-
 
         }
 

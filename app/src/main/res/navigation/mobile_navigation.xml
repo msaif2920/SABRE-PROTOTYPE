@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.prototypesabre.ui.users.UsersFragment"
-        android:label="Message"
+        android:label="Users"
         tools:layout="@layout/fragment_list_of_user" />
 
     <fragment

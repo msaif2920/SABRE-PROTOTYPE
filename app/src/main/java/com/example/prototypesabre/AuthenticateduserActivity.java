@@ -12,6 +12,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.example.prototypesabre.AuthenticatedUserFragment.CreateGroup.CreateGroup;
+import com.example.prototypesabre.AuthenticatedUserFragment.Group.Group;
+import com.example.prototypesabre.AuthenticatedUserFragment.GroupRequest.GroupRequest;
 import com.google.android.material.navigation.NavigationView;
 
 public class AuthenticateduserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +60,19 @@ public class AuthenticateduserActivity extends AppCompatActivity implements Navi
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new CreateGroup()).commit();
                 break;
+
+            case R.id.Group_Request:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new GroupRequest()).commit();
+                break;
+
+
+            case R.id.Group:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Group()).commit();
+
+                break;
+
         }
 
         drawer.closeDrawer(GravityCompat.START);

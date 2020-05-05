@@ -10,11 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AuthenticatedUserFragment.Group.GroupPost"
+            android:parentActivityName=".AuthenticatedUserFragment.Group.Authenticated_User_Group"></activity>
+        <activity android:name=".AuthenticatedUserFragment.Group.Group"></activity>
+        <activity android:name=".authenticatedUserForgotPassword" />
+        <activity android:name=".AuthenticatedUserFragment.GroupRequest.GroupReviewActivity" />
+        <activity android:name=".AuthenticatedUserFragment.Group.Authenticated_User_Group" />
+        <activity
             android:name=".firstTimelogin"
-            android:label="Update Credentials"></activity>
+            android:label="Update Credentials" />
         <activity
             android:name=".ui.users.UserInfoActivity"
-            android:label="UserInfo"></activity>
+            android:label="UserInfo" />
         <activity android:name=".ui.Registration.ReviewPage" />
         <activity
             android:name=".SuperUserActivity"

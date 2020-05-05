@@ -58,7 +58,7 @@ public class UserInfoActivity extends AppCompatActivity {
                         String Interest = document.get("Interest").toString();
                         String Credential = document.get("Credential").toString();
                         String Reference = document.get("Reference").toString();
-                        String info = "Name: " + mailto + "\n"
+                        String info = "Name: " + Name + "\n"
                                 + "Email: " + Email + "\n"
                                 + "Interest: " + Interest + "\n"
                                 + "Credential: " + Credential + "\n"

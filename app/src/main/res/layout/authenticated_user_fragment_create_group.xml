@@ -11,36 +11,36 @@
         android:id="@+id/groupName"
         android:layout_width="295dp"
         android:layout_height="60dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="Enter your group name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintHorizontal_bias="0.146"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/checkNameAvilavility"
-        android:layout_width="286dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="284dp"
+        android:layout_height="30dp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupName" />
 
     <EditText
         android:id="@+id/descriptionGroup"
-        android:layout_width="282dp"
-        android:layout_height="99dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="326dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Description for the group"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkNameAvilavility" />
 
@@ -75,6 +75,7 @@
         android:layout_width="125dp"
         android:layout_height="57dp"
         android:layout_marginTop="40dp"
+        android:alpha="1"
         android:text="Create Group"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -84,11 +85,21 @@
     <Button
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:alpha="0"
         android:text="Done"
         app:layout_constraintBaseline_toBaselineOf="@+id/Invite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toEndOf="@+id/Invite" />
+
+    <Button
+        android:id="@+id/checkGroupAvilability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:text="check"
+        app:layout_constraintBottom_toBottomOf="@+id/groupName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/groupName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

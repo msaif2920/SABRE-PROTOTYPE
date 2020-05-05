@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -40,7 +41,7 @@ public class UsersFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     ArrayList<String> emails = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
-    ArrayList<String> point = new ArrayList<String>();
+    ArrayList<Long> point = new ArrayList<Long>();
     ArrayList<String> imageLink = new ArrayList<String>();
 
     private FirebaseFirestore db;
@@ -50,8 +51,7 @@ public class UsersFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
-        usersViewModel =
-                ViewModelProviders.of(this).get(UsersViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_list_of_user, container, false);
         recyclerView = root.findViewById(R.id.user_list);
 
@@ -71,7 +71,7 @@ public class UsersFragment extends Fragment {
     }
 
     public void getUserInfo(final FirebaseCallback firebaseCallback) {
-        db.collection("Users")
+        db.collection("Users").orderBy("Point", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -81,12 +81,10 @@ public class UsersFragment extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 emails.add(document.get("Email").toString());
                                 name.add(document.get("Name").toString());
-                                point.add(document.get("Point").toString());
+                                point.add((Long) document.get("Point"));
                                 imageLink.add(document.get("Links").toString());
 
                                 firebaseCallback.onCallback(emails, name, point, imageLink);
-
-
                             }
                         } else {
                             Log.d("INFO", "Error getting documents: ", task.getException());
@@ -94,8 +92,6 @@ public class UsersFragment extends Fragment {
                     }
 
                 });
-
-
     }
 
     interface FirebaseCallback {

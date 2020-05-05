@@ -45,17 +45,10 @@ public class RegistrationFragment extends Fragment {
                 ViewModelProviders.of(this).get(RegistrationViewModel.class);
         View root = inflater.inflate(R.layout.fragment_registration_super_user, container, false);
         final ListView listof = root.findViewById(R.id.list);
+
+        //setting up the adapter
         listof.setAdapter(new ArrayAdapter<String>(root.getContext(), android.R.layout.simple_list_item_1, userRequest));
 
-        ;
-        /*final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe((LifecycleOwner) getContext(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        */
 
         db = FirebaseFirestore.getInstance();
 
@@ -67,7 +60,7 @@ public class RegistrationFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String x = (String) document.get("Name") + "\n" + (String) document.get("Email");
-                                ;
+
                                 userRequest.add(x);
                                 ((BaseAdapter) listof.getAdapter()).notifyDataSetChanged();
 

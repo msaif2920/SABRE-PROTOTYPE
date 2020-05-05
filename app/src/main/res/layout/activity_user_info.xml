@@ -13,12 +13,13 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="33dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/userInfoTextView"
         app:layout_constraintEnd_toStartOf="@+id/pointEditText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.379"
         tools:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
@@ -26,28 +27,42 @@
         android:layout_width="0dp"
         android:layout_height="403dp"
         android:layout_marginBottom="32dp"
-        android:text="TextView"
+        android:autoText="false"
+        android:fontFamily="monospace"
+        android:lineSpacingExtra="8sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userInfoProfiile" />
+        app:layout_constraintTop_toBottomOf="@+id/changePointButton" />
 
     <EditText
         android:id="@+id/pointEditText"
-        android:layout_width="186dp"
-        android:layout_height="86dp"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="28dp"
-        android:layout_marginBottom="120dp"
         android:ems="10"
         android:foregroundGravity="top|left"
         android:inputType="textPersonName"
         android:text="Point"
-        app:layout_constraintBottom_toTopOf="@+id/userInfoTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/userInfoProfiile"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/changePointButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Change"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/userInfoProfiile"
+        app:layout_constraintTop_toBottomOf="@+id/pointEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

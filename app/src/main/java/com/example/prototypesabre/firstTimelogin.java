@@ -41,7 +41,6 @@ public class firstTimelogin extends AppCompatActivity {
     private ImageView profileImageView;
     private EditText passwordEditText, repeatPasswoedEditText;
     private Uri imageURi = null;
-    Intent intent = getIntent();
     firebaseFunction Firebasefunction = new firebaseFunction();
 
 
@@ -88,15 +87,16 @@ public class firstTimelogin extends AppCompatActivity {
         if (passwordEditText.getText().toString().equals(repeatPasswoedEditText.getText().toString())) {
             //   changePassword(passwordEditText.getText().toString());
 
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
             String newPassword = passwordEditText.getText().toString().trim();
             String repeatedPassword = repeatPasswoedEditText.getText().toString().trim();
-            if (newPassword.equals(repeatedPassword) && newPassword.length() > 6) {
+            if (newPassword.equals(repeatedPassword) && (newPassword.length() > 6)) {
                 uploadFile();
                 changePassword(newPassword);
                 Firebasefunction.updateField("Users", email.trim(), "Login", "2", getApplicationContext());
+                finish();
             } else {
-                Toast.makeText(getApplicationContext(), "Failed, make sure both password are same. Make sure the password length is atleast 7 character", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Failed, make sure both password are same. Make sure the password length is at least 7 character", Toast.LENGTH_LONG).show();
             }
 
         }
@@ -145,16 +145,7 @@ public class firstTimelogin extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Uri> task) {
                 if (task.isSuccessful()) {
-                    Map<String, String> objectMap = new HashMap<>();
-                    objectMap.put("Url", task.getResult().toString());
-                    objectFirebaseFirestore.collection("Links").document(email)
-                            .set(objectMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(), "Images uploaded", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                    Firebasefunction.updateField("Users", email.trim(), "Links", task.getResult().toString(), getApplicationContext());
                 }
 
             }

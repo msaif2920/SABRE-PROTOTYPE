@@ -12,7 +12,7 @@
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="296dp"
         android:layout_height="55dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="45dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
@@ -33,7 +33,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="123456"
+        android:text="1234567"
         android:textColor="@color/fui_bgGoogle"
         android:textColorHint="@color/fui_bgGoogle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,29 +57,30 @@
         android:id="@+id/textView"
         android:layout_width="224dp"
         android:layout_height="29dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:text="Don't have an account?"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
     <TextView
         android:id="@+id/Register"
         android:layout_width="134dp"
         android:layout_height="29dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="118dp"
         android:onClick="register"
         android:text="Register now"
-        android:textColor="@color/fui_linkColor"
+        android:textColor="#F44336"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
 
     <TextView
         android:id="@+id/GuestEnter"
@@ -91,7 +92,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -108,5 +109,19 @@
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="forgotPassword"
+        android:text="Forgot Password?"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

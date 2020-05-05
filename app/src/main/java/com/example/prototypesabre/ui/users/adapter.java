@@ -22,10 +22,10 @@ public class adapter extends RecyclerView.Adapter<adapter.MyViewHolder> {
     Context ct;
     ArrayList<String> emails = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
-    ArrayList<String> point = new ArrayList<String>();
+    ArrayList<Long> point = new ArrayList<Long>();
     static ArrayList<String> links = new ArrayList<String>();
 
-    public adapter(Context ct, ArrayList<String> email, ArrayList<String> names, ArrayList<String> points, ArrayList<String> image) {
+    public adapter(Context ct, ArrayList<String> email, ArrayList<String> names, ArrayList<Long> points, ArrayList<String> image) {
 
         this.ct = ct;
         emails = email;

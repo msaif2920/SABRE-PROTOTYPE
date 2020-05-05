@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,13 +23,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.Source;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,7 +46,7 @@ public class ReviewPage extends AppCompatActivity {
     private String subject;
     private FirebaseAuth mAuth;
 
-    String password;
+
 
 
     @Override
@@ -60,8 +56,7 @@ public class ReviewPage extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         Intent intent = getIntent();
-        Email = intent.getStringExtra("Email").trim();
-        Log.i("LOL", Email);
+        Email = intent.getStringExtra("Email").trim().toUpperCase();
 
         textInfo = findViewById(R.id.infoTextView);
         approveButton = findViewById(R.id.approveButton);
@@ -85,7 +80,7 @@ public class ReviewPage extends AppCompatActivity {
                         Interest = document.get("Interest").toString();
                         Credential = document.get("Credential").toString();
                         Reference = document.get("Reference").toString();
-                        info = "Name: " + mailto + "\n"
+                        info = "Name: " + Name + "\n"
                                 + "Email: " + Email + "\n"
                                 + "Interest: " + Interest + "\n"
                                 + "Credential: " + Credential + "\n"
@@ -110,7 +105,7 @@ public class ReviewPage extends AppCompatActivity {
 
     }
 
-    public void sendData(String Name, String Email, String Interest, String Credential, String Reference, String point) {
+    public void sendData(String Name, String Email, String Interest, String Credential, String Reference, int point) {
         Map<String, Object> register = new HashMap<>();
         register.put("Name", Name);
         register.put("Email", Email);
@@ -119,6 +114,7 @@ public class ReviewPage extends AppCompatActivity {
         register.put("Reference", Reference);
         register.put("Point", point);
         register.put("Login", "1");
+        register.put("Links", "https://firebasestorage.googleapis.com/v0/b/sabre-prototype.appspot.com/o/ProfileImage%2Fdefaultuser.png?alt=media&token=41f623ee-4f86-4160-b144-c8f2572586c6");
 
 
         db.collection("Users").document(Email)
@@ -152,6 +148,8 @@ public class ReviewPage extends AppCompatActivity {
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+
+
             finish();
 
         } catch (android.content.ActivityNotFoundException ex) {
@@ -162,7 +160,7 @@ public class ReviewPage extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void send(View view) {
-        String user_point = point.getText().toString();
+        int user_point = Integer.parseInt(point.getText().toString());
         switch (view.getId()) {
             case R.id.approveButton:
 
@@ -170,7 +168,7 @@ public class ReviewPage extends AppCompatActivity {
                         StringBuilder::appendCodePoint, StringBuilder::append)
                         .toString();
 
-                result = "Congratulations! You are approved. Welcome to the SABRE community. You will start"
+                result = "Congratulations " + Name + "! You are approved. Welcome to the SABRE community. You will start"
                         + " with initial point of " + user_point + ". This is your initial password " + password +
                         ". You will have to change the password when you login for the first time. Have a productive time" +
                         "\n Sincerely, \n Samin Saif";
@@ -217,10 +215,10 @@ public class ReviewPage extends AppCompatActivity {
                 break;
 
             case R.id.denyButton:
-                result = "Sorry your registration wasn't approved. If this is your second try you are blocklisted and cannot"
+                result = "Sorry your registration wasn't approved. If this is your second try you are blacklisted and cannot"
                         + " and cannot resubmit your application. However, if it was your first attempt, you can try to " +
                         " register again. This time under interest section also add why I should reconsider my decision."
-                        + "\n \n Thank you for applying. \n Sincerly \n Samin Saif";
+                        + "\n \n Thank you for applying. \n Sincerely \n Samin Saif";
                 subject = "Registration fail";
                 sendEmail(mailto, subject, result);
 
@@ -228,4 +226,6 @@ public class ReviewPage extends AppCompatActivity {
         }
 
     }
+
+
 }
