@@ -29,7 +29,7 @@ public class GroupReviewActivity extends AppCompatActivity {
     Button acceptButton;
     String groupName;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String currentUser, Name, groupDescription, contact, invitedbBy;
+    String currentUser, Name, groupDescription, contact, invitedbBy, imageLink;
     long Point;
 
     @Override
@@ -58,7 +58,7 @@ public class GroupReviewActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
-                        groupName = document.get("Group Name").toString().trim();
+                        groupName = document.getId().trim();
                         groupDescription = document.get("Group Description").toString();
                         invitedbBy = document.get("Created By").toString();
                         contact = document.get("Contact").toString();
@@ -93,6 +93,8 @@ public class GroupReviewActivity extends AppCompatActivity {
 
         data.put("Point", Point);
         data.put("Name", Name);
+        data.put("Profile image", imageLink);
+        data.put("Contact", currentUser);
 
 
         db.collection("Groups").document(groupName).collection("Members").document(currentUser)
@@ -144,6 +146,9 @@ public class GroupReviewActivity extends AppCompatActivity {
                     if (document.exists()) {
                         Name = document.get("Name").toString();
                         Point = (long) document.get("Point");
+                        imageLink = document.get("Links").toString();
+
+
                     } else {
                         Toast.makeText(GroupReviewActivity.this, "Ops", Toast.LENGTH_SHORT).show();
                     }

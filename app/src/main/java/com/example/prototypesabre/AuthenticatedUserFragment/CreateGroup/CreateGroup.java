@@ -37,7 +37,9 @@ public class CreateGroup extends Fragment {
     EditText groupName, descriptionGroup, Email;
     TextView checkAvail;
     Button inviteButton, doneButton, createGroup, checkGroupNameAviability;
-    String currentUser, currentUserName;
+    String currentUser, currentUserName, currentUserImageLink;
+    Long currentUserPoint;
+
 
     public static final String TAG = "DOCUMENT";
 
@@ -69,6 +71,8 @@ public class CreateGroup extends Fragment {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             currentUserName = document.get("Name").toString();
+                            currentUserPoint = (Long) document.get("Point");
+                            currentUserImageLink = document.get("Links").toString();
                         } else {
                             Log.d(TAG, "No such document");
                         }
@@ -186,8 +190,28 @@ public class CreateGroup extends Fragment {
 
     public void createGroup(String groupName, String groupDescription) {
         Map<String, Object> group = new HashMap<>();
-        group.put("Group Name", groupName);
-        group.put("Group Description", groupDescription);
+        Map<String, Object> info = new HashMap<>();
+        Map<String, Object> groupChat = new HashMap<>();
+
+
+        groupChat.put("Message", "Welcome");
+        groupChat.put("Time", FieldValue.serverTimestamp());
+        groupChat.put("Sent by", currentUserName);
+
+
+        group.put("Name", currentUserName);
+        group.put("Contact", currentUser);
+        group.put("Profile image", currentUserImageLink);
+        group.put("Point", currentUserPoint);
+
+        info.put("Group Description", groupDescription);
+        info.put("Group Name", groupName);
+
+
+        db.collection("Groups").document(groupName).collection("Group Chat").document()
+                .set(groupChat);
+
+
 
 
         //creating group database
@@ -199,7 +223,7 @@ public class CreateGroup extends Fragment {
                         Toast.makeText(getContext(), "Successfully created the group", Toast.LENGTH_SHORT).show();
                         //adding group info to the creator of the group
                         db.collection("Users").document(currentUser).collection("Groups").document(groupName)
-                                .set(group)
+                                .set(info)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
@@ -224,10 +248,12 @@ public class CreateGroup extends Fragment {
 
 
         //adding more information to the field of group
-        group.put("Created By", currentUserName);
-        group.put("Contact", currentUser);
+        info.put("Created By", currentUserName);
+        info.put("Contact", currentUser);
+        info.put("Image Number", 0);
+
         db.collection("Groups").document(groupName)
-                .set(group);
+                .set(info);
 
 
     }
@@ -264,4 +290,6 @@ public class CreateGroup extends Fragment {
 
 
     }
+
+
 }

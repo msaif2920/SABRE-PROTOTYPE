@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/connect"
+        android:title="Connect"></item>
+
+    <item
+        android:id="@+id/connectReqeust"
+        android:title="Connect Request"></item>
+
+    <item
+        android:id="@+id/pendingRequest"
+        android:title="Pending Request"></item>
+
+    <item
+        android:id="@+id/blockList"
+        android:title="Block List"></item>
+</menu>

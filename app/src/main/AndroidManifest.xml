@@ -9,10 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AuthenticatedUserFragment.Chat.chatFragment.groupChatMessage"></activity>
+        <activity android:name=".AuthenticatedUserFragment.Chat.chatFragment.actualMessageChat" />
+        <activity android:name=".AuthenticatedUserFragment.Chat.connectRequestReview" />
+        <activity android:name=".AuthenticatedUserFragment.Chat.connectRequest" />
+        <activity android:name=".AuthenticatedUserFragment.Chat.connectWithOthers" />
+        <activity
+            android:name=".AuthenticatedUserFragment.Actions.Report"
+            android:parentActivityName=".AuthenticatedUserFragment.Actions.AuthenticateduserActivity" />
+        <activity
+            android:name=".AuthenticatedUserFragment.Actions.complementOthers"
+            android:label="@string/title_activity_complement_others"
+            android:parentActivityName=".AuthenticatedUserFragment.Actions.AuthenticateduserActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".AuthenticatedUserFragment.Group.MembersInviteOthers" />
+        <activity android:name=".AuthenticatedUserFragment.Group.GroupMembers" />
+        <activity android:name=".AuthenticatedUserFragment.Group.comment_acitivity" />
         <activity
             android:name=".AuthenticatedUserFragment.Group.GroupPost"
-            android:parentActivityName=".AuthenticatedUserFragment.Group.Authenticated_User_Group"></activity>
-        <activity android:name=".AuthenticatedUserFragment.Group.Group"></activity>
+            android:parentActivityName=".AuthenticatedUserFragment.Group.Authenticated_User_Group" />
+        <activity android:name=".AuthenticatedUserFragment.Group.Group" />
         <activity android:name=".authenticatedUserForgotPassword" />
         <activity android:name=".AuthenticatedUserFragment.GroupRequest.GroupReviewActivity" />
         <activity android:name=".AuthenticatedUserFragment.Group.Authenticated_User_Group" />
@@ -34,7 +50,7 @@
         </activity>
         <activity android:name=".RegisternowActivity" />
         <activity
-            android:name=".AuthenticateduserActivity"
+            android:name=".AuthenticatedUserFragment.Actions.AuthenticateduserActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"

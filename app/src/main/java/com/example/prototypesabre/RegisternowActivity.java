@@ -36,7 +36,7 @@ public class RegisternowActivity extends AppCompatActivity {
         setContentView(R.layout.registernow);
 
         Name = findViewById(R.id.nameEditText);
-        Email = findViewById(R.id.emailEditText);
+        Email = findViewById(R.id.emailReceivingCompliment);
         Interest = findViewById(R.id.interestEditText);
         Credential = findViewById(R.id.credentialEditText);
         Reference = findViewById(R.id.referenceEditText);
