@@ -206,6 +206,7 @@ public class CreateGroup extends Fragment {
 
         info.put("Group Description", groupDescription);
         info.put("Group Name", groupName);
+        info.put("Total Point", currentUserPoint);
 
 
         db.collection("Groups").document(groupName).collection("Group Chat").document()

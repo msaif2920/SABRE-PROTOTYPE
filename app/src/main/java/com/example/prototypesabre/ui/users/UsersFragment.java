@@ -35,7 +35,6 @@ import java.util.ArrayList;
 public class UsersFragment extends Fragment {
 
 
-    private UsersViewModel usersViewModel;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;

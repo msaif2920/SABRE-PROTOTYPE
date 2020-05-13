@@ -38,9 +38,9 @@
             app:srcCompat="@drawable/resiftration" />
 
         <EditText
-            android:id="@+id/emailReceivingCompliment"
-            android:layout_width="309dp"
-            android:layout_height="48dp"
+            android:id="@+id/emailEditText"
+            android:layout_width="0dp"
+            android:layout_height="47dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:ems="10"
@@ -48,8 +48,6 @@
             android:inputType="textEmailAddress"
             android:textColorHint="@color/colorPrimary"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
@@ -66,7 +64,7 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailReceivingCompliment" />
+            app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
         <EditText
             android:id="@+id/credentialEditText"
@@ -110,6 +108,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/referenceEditText" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:onClick="validateEmail"
+            android:text="Validate"
+            app:layout_constraintBottom_toBottomOf="@+id/emailEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/emailEditText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

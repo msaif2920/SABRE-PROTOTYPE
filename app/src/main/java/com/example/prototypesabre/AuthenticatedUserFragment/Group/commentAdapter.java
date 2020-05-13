@@ -43,7 +43,13 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.commentorName.setText(commentPersonName.get(position));
         holder.comment.setText(comments.get(position));
-        Picasso.with(ct).load(commentPersonImage.get(position)).into(holder.commentorImage);
+        try {
+            Picasso.with(ct).load(commentPersonImage.get(position)).into(holder.commentorImage);
+        } catch (Exception e) {
+            holder.commentorImage.setImageResource(R.drawable.profile_placeholder);
+        }
+
+
     }
 
 

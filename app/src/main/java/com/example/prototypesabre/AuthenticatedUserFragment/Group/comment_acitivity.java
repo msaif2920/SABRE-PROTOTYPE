@@ -174,8 +174,14 @@ public class comment_acitivity extends AppCompatActivity {
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                image = documentSnapshot.get("Links").toString();
-                name = documentSnapshot.get("Name").toString();
+                try {
+                    image = documentSnapshot.get("Links").toString();
+                    name = documentSnapshot.get("Name").toString();
+                } catch (Exception e) {
+                    image = "";
+                    name = "Super User";
+                }
+
             }
         });
 

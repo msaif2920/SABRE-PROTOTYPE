@@ -253,7 +253,11 @@ public class recylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     .document(documentId.get(viewHolderThree.getAdapterPosition() - 1)).collection("Like Dislike").document(getCurrentUser());
 
             //loading image for person who is posting
-            Picasso.with(ct).load(userImageLink.get(position - 1)).into(((ViewHolderThree) holder).posterImagewithoutImageview);
+            try {
+                Picasso.with(ct).load(userImageLink.get(position - 1)).into(((ViewHolderThree) holder).posterImagewithoutImageview);
+            } catch (Exception e) {
+                viewHolderThree.posterImagewithoutImageview.setImageResource(R.drawable.red);
+            }
             viewHolderThree.profileNameWithoutImageView.setText(name.get(position - 1));
 
             //here Updating button according to like Dislike status
@@ -494,7 +498,11 @@ public class recylerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
             //Image for user profile and the post
-            Picasso.with(ct).load(userImageLink.get(position - 1)).into(((ViewHolderTwo) holder).posterImage);
+            try {
+                Picasso.with(ct).load(userImageLink.get(position - 1)).into(((ViewHolderTwo) holder).posterImage);
+            } catch (Exception e) {
+                viewHolderTwo.posterImage.setImageResource(R.drawable.red);
+            }
             Picasso.with(ct).load(imageLink.get(position - 1)).into(((ViewHolderTwo) holder).imageGroupPost);
 
 

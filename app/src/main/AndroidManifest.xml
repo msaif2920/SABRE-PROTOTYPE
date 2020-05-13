@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AuthenticatedUserFragment.Chat.chatFragment.groupChatMessage"></activity>
+        <activity android:name=".AuthenticatedUserFragment.Group.removeGroupMember"></activity>
+        <activity android:name=".GuestUser.groupPostAllUser" />
+        <activity android:name=".GuestUser.member_info_activity_all" />
+        <activity android:name=".GuestUser.allGroupAndMembersForGuestAndOU" />
+        <activity android:name=".GuestUser.guestUserActvity" />
+        <activity android:name=".ui.Actions.removeGroup" />
+        <activity android:name=".ui.Reports.reviewComplain" />
+        <activity android:name=".AuthenticatedUserFragment.Chat.chatFragment.groupChatMessage" />
         <activity android:name=".AuthenticatedUserFragment.Chat.chatFragment.actualMessageChat" />
         <activity android:name=".AuthenticatedUserFragment.Chat.connectRequestReview" />
         <activity android:name=".AuthenticatedUserFragment.Chat.connectRequest" />

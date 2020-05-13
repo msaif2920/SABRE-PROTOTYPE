@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/emailReceivingCompliment"
+        android:id="@+id/emailEditText"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="296dp"
         android:layout_height="55dp"
@@ -16,7 +16,6 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:text="saminsaif29@gmail.com"
         android:textColor="@color/fui_bgGoogle"
         android:textColorHint="@color/fui_bgGoogle"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,12 +32,11 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:text="1234567"
         android:textColor="@color/fui_bgGoogle"
         android:textColorHint="@color/fui_bgGoogle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailReceivingCompliment" />
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
     <Button
         android:id="@+id/signInButton"

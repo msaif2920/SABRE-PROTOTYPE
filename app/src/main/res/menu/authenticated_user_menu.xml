@@ -3,10 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="nav_view">
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/Home"
-            android:title="Home"
-            android:icon="@drawable/ic_home" />
+
         <item
             android:id="@+id/Group"
             android:title="Group"
@@ -23,6 +20,10 @@
             android:id="@+id/chat"
             android:title="Chat"
             android:icon="@drawable/ic_chat" />
+        <item
+            android:id="@+id/allGroupAndMembers"
+            android:title="Groups And Members"
+            android:icon="@drawable/ic_group_request" />
 
     </group>
 

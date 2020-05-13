@@ -367,7 +367,10 @@ public class GroupPost extends AppCompatActivity {
                         personsName.setText(userName);
                         Picasso.with(getApplicationContext()).load(userImageLink).into(profileImageView);
                     } else {
-                        Toast.makeText(getApplicationContext(), "No Such user exists", Toast.LENGTH_SHORT).show();
+                        userName = "Super User";
+                        userImageLink = "None";
+                        personsName.setText(userName);
+                        profileImageView.setImageResource(R.drawable.profile_placeholder);
                     }
                 } else {
                     Toast.makeText(GroupPost.this, "Something went wrong", Toast.LENGTH_SHORT).show();

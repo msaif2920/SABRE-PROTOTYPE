@@ -3,35 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_users">
+
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.prototypesabre.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_users"
         android:name="com.example.prototypesabre.ui.users.UsersFragment"
         android:label="Users"
         tools:layout="@layout/fragment_list_of_user" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_request"
         android:name="com.example.prototypesabre.ui.Registration.RegistrationFragment"
         android:label="Registration"
         tools:layout="@layout/fragment_registration_super_user" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.prototypesabre.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:id="@+id/nav_reports"
+        android:name="com.example.prototypesabre.ui.Reports.reportFragment"
+        android:label="Complains"
+        tools:layout="@layout/fragment_reports" />
 
     <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.prototypesabre.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/nav_compliment"
+        android:name="com.example.prototypesabre.ui.Compliments.compliments"
+        android:label="Compliment Evaluation"
+        tools:layout="@layout/fragment_evaluate_compliment" />
+
+    <fragment
+        android:id="@+id/nav_groups"
+        android:name="com.example.prototypesabre.ui.Groups.groups"
+        android:label="List of Groups"
+        tools:layout="@layout/authenticated_user_group_list"
+
+        />
 </navigation>

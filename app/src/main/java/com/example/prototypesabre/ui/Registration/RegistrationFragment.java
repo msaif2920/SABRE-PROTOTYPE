@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 public class RegistrationFragment extends Fragment {
 
-    private RegistrationViewModel toolsViewModel;
+
     final ArrayList<String> userRequest = new ArrayList<String>();
     private FirebaseFirestore db;
 
@@ -41,8 +41,7 @@ public class RegistrationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        toolsViewModel =
-                ViewModelProviders.of(this).get(RegistrationViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_registration_super_user, container, false);
         final ListView listof = root.findViewById(R.id.list);
 

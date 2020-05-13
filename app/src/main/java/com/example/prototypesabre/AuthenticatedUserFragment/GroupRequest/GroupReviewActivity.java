@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -96,6 +97,7 @@ public class GroupReviewActivity extends AppCompatActivity {
         data.put("Profile image", imageLink);
         data.put("Contact", currentUser);
 
+        db.collection("Groups").document(groupName).update("Total Point", FieldValue.increment(Point));
 
         db.collection("Groups").document(groupName).collection("Members").document(currentUser)
                 .set(data).addOnSuccessListener(new OnSuccessListener<Void>() {

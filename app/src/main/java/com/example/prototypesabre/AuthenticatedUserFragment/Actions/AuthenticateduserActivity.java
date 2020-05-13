@@ -18,6 +18,7 @@ import com.example.prototypesabre.AuthenticatedUserFragment.Chat.Chat;
 import com.example.prototypesabre.AuthenticatedUserFragment.CreateGroup.CreateGroup;
 import com.example.prototypesabre.AuthenticatedUserFragment.Group.Group;
 import com.example.prototypesabre.AuthenticatedUserFragment.GroupRequest.GroupRequest;
+import com.example.prototypesabre.GuestUser.allGroupAndMembersForGuestAndOU;
 import com.example.prototypesabre.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -85,7 +86,11 @@ public class AuthenticateduserActivity extends AppCompatActivity implements Navi
             case R.id.chat:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new Chat()).commit();
+                break;
 
+            case R.id.allGroupAndMembers:
+                Intent intent = new Intent(getApplicationContext(), allGroupAndMembersForGuestAndOU.class);
+                startActivity(intent);
                 break;
 
 
@@ -124,5 +129,12 @@ public class AuthenticateduserActivity extends AppCompatActivity implements Navi
                 return true;
         }
         return false;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new Group()).commit();
     }
 }

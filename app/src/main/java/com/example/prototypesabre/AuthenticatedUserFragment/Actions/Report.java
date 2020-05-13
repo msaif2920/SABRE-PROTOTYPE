@@ -71,7 +71,7 @@ public class Report extends AppCompatActivity {
     public void complainDatabase(String emailOrGroup, String from, String complain) {
 
         Map<String, Object> complains = new HashMap<>();
-        complains.put("Email/Group", emailOrGroup);
+        complains.put("Email or Group", emailOrGroup);
         complains.put("Complain From", from);
         complains.put("Complain", complain);
         complains.put("Time", FieldValue.serverTimestamp());

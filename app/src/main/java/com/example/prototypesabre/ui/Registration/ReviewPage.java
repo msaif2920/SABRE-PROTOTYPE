@@ -38,6 +38,7 @@ public class ReviewPage extends AppCompatActivity {
     private FirebaseFirestore db;
     String info = "";
     String Email;
+    String rank;
     private Button approveButton;
     private Button denyButton;
     private EditText point;
@@ -115,7 +116,12 @@ public class ReviewPage extends AppCompatActivity {
         register.put("Point", point);
         register.put("Login", "1");
         register.put("Links", "https://firebasestorage.googleapis.com/v0/b/sabre-prototype.appspot.com/o/ProfileImage%2Fdefaultuser.png?alt=media&token=41f623ee-4f86-4160-b144-c8f2572586c6");
-
+        if (point >= 30) {
+            rank = "VIP";
+        } else {
+            rank = "OU";
+        }
+        register.put("Rank", rank);
 
         db.collection("Users").document(Email)
                 .set(register)
@@ -160,69 +166,74 @@ public class ReviewPage extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void send(View view) {
-        int user_point = Integer.parseInt(point.getText().toString());
-        switch (view.getId()) {
-            case R.id.approveButton:
+        if (point.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Enter point", Toast.LENGTH_SHORT).show();
+        } else {
+            int user_point = Integer.parseInt(point.getText().toString());
 
-                String password = new Random().ints(7, 33, 122).collect(StringBuilder::new,
-                        StringBuilder::appendCodePoint, StringBuilder::append)
-                        .toString();
+            switch (view.getId()) {
+                case R.id.approveButton:
 
-                result = "Congratulations " + Name + "! You are approved. Welcome to the SABRE community. You will start"
-                        + " with initial point of " + user_point + ". This is your initial password " + password +
-                        ". You will have to change the password when you login for the first time. Have a productive time" +
-                        "\n Sincerely, \n Samin Saif";
+                    String password = new Random().ints(7, 33, 122).collect(StringBuilder::new,
+                            StringBuilder::appendCodePoint, StringBuilder::append)
+                            .toString();
 
-                subject = "Registration approved";
-                // Initialize Firebase Auth
-                mAuth = FirebaseAuth.getInstance();
+                    result = "Congratulations " + Name + "! You are approved. Welcome to the SABRE community. You will start"
+                            + " with initial point of " + user_point + ". This is your initial password " + password +
+                            ". You will have to change the password when you login for the first time. Have a productive time" +
+                            "\n Sincerely, \n Samin Saif";
 
-                mAuth.createUserWithEmailAndPassword(mailto, password)
-                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    db.collection("Registration").document(Email)
-                                            .delete()
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Log.d("Success", "DocumentSnapshot successfully deleted!");
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.w("Failed", "Error deleting document", e);
-                                                }
-                                            });
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.i("SUCCESS!", "createUserWithEmail:success");
-                                    //   FirebaseUser user = mAuth.getCurrentUser();
-                                    sendData(Name, mailto, Interest, Credential, Reference, user_point);
-                                    sendEmail(mailto, subject, result);
+                    subject = "Registration approved";
+                    // Initialize Firebase Auth
+                    mAuth = FirebaseAuth.getInstance();
 
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(getApplicationContext(), "SOMETHING WENT WRONG", Toast.LENGTH_LONG).show();
+                    mAuth.createUserWithEmailAndPassword(mailto, password)
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        db.collection("Registration").document(Email)
+                                                .delete()
+                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Log.d("Success", "DocumentSnapshot successfully deleted!");
+                                                    }
+                                                })
+                                                .addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Log.w("Failed", "Error deleting document", e);
+                                                    }
+                                                });
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.i("SUCCESS!", "createUserWithEmail:success");
+                                        //   FirebaseUser user = mAuth.getCurrentUser();
+                                        sendData(Name, mailto, Interest, Credential, Reference, user_point);
+                                        sendEmail(mailto, subject, result);
+
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Toast.makeText(getApplicationContext(), "SOMETHING WENT WRONG", Toast.LENGTH_LONG).show();
+                                    }
+
+                                    // ...
                                 }
-
-                                // ...
-                            }
-                        });
+                            });
 
 
-                break;
+                    break;
 
-            case R.id.denyButton:
-                result = "Sorry your registration wasn't approved. If this is your second try you are blacklisted and cannot"
-                        + " and cannot resubmit your application. However, if it was your first attempt, you can try to " +
-                        " register again. This time under interest section also add why I should reconsider my decision."
-                        + "\n \n Thank you for applying. \n Sincerely \n Samin Saif";
-                subject = "Registration fail";
-                sendEmail(mailto, subject, result);
+                case R.id.denyButton:
+                    result = "Sorry your registration wasn't approved. If this is your second try you are blacklisted and cannot"
+                            + " and cannot resubmit your application. However, if it was your first attempt, you can try to " +
+                            " register again. This time under interest section also add why I should reconsider my decision."
+                            + "\n \n Thank you for applying. \n Sincerely \n Samin Saif";
+                    subject = "Registration fail";
+                    sendEmail(mailto, subject, result);
 
 
+            }
         }
 
     }

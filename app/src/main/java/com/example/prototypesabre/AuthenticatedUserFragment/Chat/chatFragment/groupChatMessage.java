@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -28,6 +30,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,12 +42,19 @@ public class groupChatMessage extends AppCompatActivity {
     Button groupChatMessageSend;
     RecyclerView groupChatRecylerView;
 
+    ArrayList<String> bannedWord = new ArrayList<>();
+
     ArrayList<String> message = new ArrayList<>();
     ArrayList<String> sentBy = new ArrayList<>();
 
+    String finalMessage = "";
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    DocumentReference blockWordRef = db.collection("Blocked word")
-            .document("Bad Words");
+    CollectionReference blockWordRef = db.collection("Blocked Word");
+
+    Boolean update = false;
+
+    String[] parts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +93,19 @@ public class groupChatMessage extends AppCompatActivity {
             }
         });
 
+        blockWordRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        bannedWord.add(document.getId());
+
+                    }
+                } else {
+
+                }
+            }
+        });
 
     }
 
@@ -133,8 +156,18 @@ public class groupChatMessage extends AppCompatActivity {
         if (groupChatMessageEditText.getText().toString().isEmpty()) {
             Toast.makeText(this, "Please enter your message first", Toast.LENGTH_SHORT).show();
         } else {
+            parts = (groupChatMessageEditText.getText().toString()).split("\\s+");
+
+            if (checkIfWordIsBanned()) {
+                db.collection("Users").document(getCurrentUser())
+                        .update("Point", FieldValue.increment(-1));
+            }
+
             Map<String, Object> sendMessage = new HashMap<>();
-            sendMessage.put("Message", groupChatMessageEditText.getText().toString());
+            for (int i = 0; i < parts.length; i++) {
+
+            }
+            sendMessage.put("Message", finalMessage);
             sendMessage.put("Sent By", currentuserName);
             sendMessage.put("Time", FieldValue.serverTimestamp());
 
@@ -151,5 +184,27 @@ public class groupChatMessage extends AppCompatActivity {
     interface FirebaseCallback {
 
         void onCallback(ArrayList list, ArrayList list2);
+    }
+
+    interface FirebaseCallback2 {
+
+        void onCallback(Boolean val);
+    }
+
+    //sorry I will fix this later
+    public Boolean checkIfWordIsBanned() {
+        for (int i = 0; i < parts.length; i++) {
+            for (int j = 0; j < bannedWord.size(); j++) {
+                if (parts[i].equalsIgnoreCase(bannedWord.get(j))) {
+                    parts[i] = "****";
+
+                    update = true;
+                }
+
+
+            }
+            finalMessage = finalMessage + parts[i] + " ";
+        }
+        return update;
     }
 }
