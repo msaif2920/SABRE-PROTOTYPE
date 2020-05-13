@@ -1,3 +1,6 @@
+-------------------------------------------USE README DOCX FOR INSTRUCTION WITH PICTURES---------------------------------------------------
+
+
 •	This program runs on android studio. Thus, the first step is to install android studio.
 •	Secondly enable GitHub from the vcs tool bar in  android studio.
 •	After vcs is enabled go to GitHub page and get the clone or download link.
