@@ -1,4 +1,5 @@
 -------------------------------------------USE README DOCX FOR INSTRUCTION WITH PICTURES---------------------------------------------------
+-----------------------------------------Please Run the app in Nexus 5x API 26 (tested throughly)-----------------------------------------------------------
 
 
 •	This program runs on android studio. Thus, the first step is to install android studio.
