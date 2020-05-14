@@ -161,4 +161,10 @@ public class GroupReviewActivity extends AppCompatActivity {
         });
 
     }
+
+    public void deny(View view) {
+        db.collection("Users").document(currentUser).collection("Group Invite")
+                .document(groupName).delete();
+        finish();
+    }
 }
