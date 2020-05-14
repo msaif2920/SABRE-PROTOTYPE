@@ -1,5 +1,5 @@
 -------------------------------------------USE README DOCX FOR INSTRUCTION WITH PICTURES------------------------------------------------
------------------------------------------Please Run the app in Nexus 5x API 26 (tested throughly)-----------------------------------------
+-----------------------------------------Please Run the app in Nexus 5x API 26 (tested throughly)---------------------------------------
 
 
 •	This program runs on android studio. Thus, the first step is to install android studio.
@@ -22,7 +22,7 @@
 
 •	Choose yes
 
-•	Let the program build. Wait for it state build. Check if Gradle build finished at the bottom
+•	Let the program build. Check if Gradle build finished at the bottom
 
 •	Hit run and run the app
 
