@@ -1,5 +1,5 @@
--------------------------------------------USE README DOCX FOR INSTRUCTION WITH PICTURES---------------------------------------------------
------------------------------------------Please Run the app in Nexus 5x API 26 (tested throughly)-----------------------------------------------------------
+-------------------------------------------USE README DOCX FOR INSTRUCTION WITH PICTURES------------------------------------------------
+-----------------------------------------Please Run the app in Nexus 5x API 26 (tested throughly)-----------------------------------------
 
 
 •	This program runs on android studio. Thus, the first step is to install android studio.
@@ -12,7 +12,7 @@
 •	The test will return successful
 •	Then click on clone
 •	Choose yes
-•	Let the program build. Wait for it state build. Grade finished at the bottom
+•	Let the program build. Wait for it state build. Check if Gradle build finished at the bottom
 •	Hit run and run the app
 •	There are Different type of users. 
 •	If you want to login as Super User
